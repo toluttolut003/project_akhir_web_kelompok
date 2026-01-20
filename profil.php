@@ -1,3 +1,12 @@
+<?php
+session_start();
+if (!isset($_SESSION['username']) && !isset($_SESSION['password'])) {
+    header("Location: login.php");
+    exit();
+}
+
+?>
+
 <!DOCTYPE html>
 <html lang="id">
 <head>
@@ -20,8 +29,15 @@
                 <li><a href="profil.php" class="active">Profil</a></li> 
                 <li><a href="struktur.php">Struktur</a></li>
                 <li><a href="anggota.php">Anggota</a></li>
-                <li><a href="galeri.php">Galeri</a></li>
-                <li><a href="logout.php">Logout</a></li>
+                <li><a href="profil.php">Galeri</a></li>
+                <li><a href="index.php?action=logout" name="logout">Logout</a></li>
+                <?php
+                if (isset($_GET['action']) && $_GET['action'] == 'logout'){
+                    header("Location: login.php");
+                    session_destroy();
+                    exit();
+                }
+                ?>
             </ul>
         </nav>
     </div>
