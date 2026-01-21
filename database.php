@@ -47,11 +47,9 @@ class Anggota extends Database {
         $conn->query($reg);
     }
 
-    function LoginUser($conn, $username, $password){
-        $sql = "SELECT * FROM `session` WHERE username = '$username' AND `password` = '$password' ";
+    function LoginUser($conn, $usernames, $passwords){
+        $sql = "SELECT * FROM `session` WHERE username = '$usernames' AND `password` = '$passwords' ";
         $result = $conn->query($sql);
         $row = $result->fetch_assoc();
         return $row;
     } //harusnya di beri nama fetch function or smth
-
-    

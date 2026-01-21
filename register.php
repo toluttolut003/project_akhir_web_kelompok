@@ -31,19 +31,20 @@
     
      
     if (isset($_POST['register'])) {
-    $username = $_POST['username'];
-    $password = $_POST['password'];
-    if (!empty($username) and !empty($password)){
-        if (LoginUser($conn, $username, $password)['username'] == $username) {
-            register($conn, $username, $password);
-            echo '<script> alert("pendaftaran berhasil!"); window.location.href = "login.php";</script>';
-             exit();
+        $username = $_POST['username'];
+        $passwords = $_POST['password'];
+        if ($username == '' or $password == ''){
+            //garagara tidak di enkripsi tadi tuh aaaaaaaaaaaaaaaaa jadi gagal
+            if (!LoginUser($conn, $username, md5($passwords))) {
+                register($conn, $username, $passwords);
+                echo '<script> alert("pendaftaran berhasil!"); window.location.href = "login.php";</script>';
+                exit();
+            } else {
+                echo '<script> alert("username sudah digunakan, silahkan gunakan nama yang lain"); window.location.href = "register.php";</script>';
+            }
         } else {
-            echo '<script> alert("username sudah digunakan, silahkan gunakan nama yang lain"); window.location.href = "register.php";</script>';
+            echo "silahkan masukan username/password";
         }
-    } else {
-        echo "silahkan masukan username/password";
-    }
     
 
     }
