@@ -53,7 +53,12 @@
         
     }
 
-    
+    function LoginUser($conn, $username, $password){
+        $sql = "SELECT * FROM `session` WHERE username = '$username' AND `password` = '$password' ";
+        $result = $conn->query($sql);
+        $row = $result->fetch_assoc();
+        return $row;
+    }
 
 ?>
 

@@ -34,13 +34,10 @@
     $username = $_POST['username'];
     $password = $_POST['password'];
     if (!empty($username) and !empty($password)){
-        if (LoginUser($conn, $username, $password)['username'] == $username) {
-            register($conn, $username, $password);
-            echo '<script> alert("pendaftaran berhasil!"); window.location.href = "login.php";</script>';
-             exit();
-        } else {
-            echo '<script> alert("username sudah digunakan, silahkan gunakan nama yang lain"); window.location.href = "register.php";</script>';
-        }
+        
+        register($conn, $username, $password);
+        echo '<script> alert("pendaftaran berhasil!"); window.location.href = "login.php";</script>';
+        exit();
     } else {
         echo "silahkan masukan username/password";
     }

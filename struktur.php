@@ -1,13 +1,4 @@
 
-<?php
-session_start();
-if (!isset($_SESSION['username']) && !isset($_SESSION['password'])) {
-    header("Location: login.php");
-    exit();
-}
-
-?>
-
 <!DOCTYPE html>
 <html lang="id">
 <head>
@@ -39,7 +30,6 @@ if (!isset($_SESSION['username']) && !isset($_SESSION['password'])) {
                     exit();
                 }
                 ?>
-                    <li><?php echo "hi!  " . $_SESSION['username'];?></li>
                 </ul>
             </nav>
         </div>
