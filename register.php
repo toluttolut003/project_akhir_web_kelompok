@@ -1,13 +1,7 @@
+
 <?php
-session_start();
 
-if (isset($_POST['register'])) {
-    // sementara belum pakai database
-    header("Location: login.php");
-    exit;
-}
 ?>
-
 <!DOCTYPE html>
 <html lang="id">
 <head>
