@@ -32,13 +32,14 @@ if (!isset($_SESSION['username']) && !isset($_SESSION['password'])) {
                     <li><a href="anggota.php">Anggota</a></li>
                     <li><a href="galeri.php" class="active" >Galeri</a></li>
                     <li><a href="galeri.php?action=logout" name="logout">Logout</a></li>
-                <?php
-                if (isset($_GET['action']) && $_GET['action'] == 'logout'){
-                    header("Location: login.php");
-                    session_destroy();
-                    exit();
-                }
-                ?>
+                    <?php
+                    if (isset($_GET['action']) && $_GET['action'] == 'logout'){
+                        header("Location: login.php");
+                        session_destroy();
+                        exit();
+                    }
+                    ?>
+                    <li><?php echo "hi!  " . $_SESSION['username'];?></li>
                 </ul>
             </nav>
         </div>

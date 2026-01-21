@@ -42,6 +42,7 @@ if (!isset($_SESSION['username']) && !isset($_SESSION['password'])) {
                     exit();
                 }
                 ?>
+                <li><?php echo "hi!  " . $_SESSION['username'];?></li>
             </ul>
         </nav>
     </div>
@@ -60,13 +61,16 @@ if (!isset($_SESSION['username']) && !isset($_SESSION['password'])) {
         <h3><?= $row['nama'] ?></h3>
         <h4><?= $row['npm'] ?></h4>
         <blockquote>"<?= $row['quotes'] ?>"</blockquote><br>
-
+    <?php if ($_SESSION['status'] == 'admin') { ?>
         <a href="edit.php?id=<?= $row['id'] ?>">Edit</a>
+
         <a href="hapus.php?id=<?= $row['id'] ?>"
            onclick="return confirm('Hapus data?')">Hapus</a>
+    <?php }?>
     </div>
 <?php endwhile; ?>
 
+    <?php if ($_SESSION['status'] == 'admin') { ?>
     <div class="anggota-tambah">
         <a href="anggota.php?action=tambah" name="tambah">Tambah Anggota</a>
         <?php
@@ -81,6 +85,8 @@ if (!isset($_SESSION['username']) && !isset($_SESSION['password'])) {
                 }
         ?>
     </div>
+
+    <?php } ?>
 
 </div>
 </div>

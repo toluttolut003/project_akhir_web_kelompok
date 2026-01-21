@@ -38,6 +38,7 @@ if (!isset($_SESSION['username']) && !isset($_SESSION['password'])) {
                     exit();
                 }
                 ?>
+                <li><?php echo "hi!  " . $_SESSION['username'];?></li>
             </ul>
         </nav>
     </div>
