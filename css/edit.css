@@ -1,0 +1,54 @@
+:root {
+    --warna-cream: #FAF8F1;
+    --warna-putih: #FFFFFF;
+    --warna-coklat-gelap: #4E4039;
+    --warna-coklat-sedang: #8D6E63;
+    --warna-krem-terang: #EFEBE5;
+    --font-utama: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: var(--font-utama);
+    font-size: 30px;
+    background-color: var(--warna-cream);
+    color: var(--warna-coklat-gelap);
+    line-height: 1.6;
+    min-height: 100vh;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    display: flex;
+}
+
+form {
+    font-size: 50px;
+    width: 500px;
+    height: 280px;
+    background-color: var(--warna-putih);
+    padding: 10px;
+    border-radius: 10px;
+    flex-direction: column;
+    display: flex;
+    
+}
+
+input {
+    font-size: 25px;
+    padding-left: 5px;
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+
+button {
+    font-size: 25px;
+    padding-left: 5px;
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+

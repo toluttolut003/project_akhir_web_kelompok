@@ -1,3 +1,9 @@
+<?php
+require_once "database.php";
+$anggota = new Anggota();
+$data = $anggota->getAll();
+?>
+
 <!DOCTYPE html>
 <html lang="id">
 <head>
@@ -5,280 +11,64 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Anggota - IF.Algoritma</title>
     <link rel="stylesheet" href="css/style.css">
-    <link rel="stylesheet" href="css/image_style.css">
-    </head>
+</head>
 <body>
-    <header class="main-header">
-        <div class="container">
-            <div class="logo-container">
-                <img src="image/logo.jpg" alt="Logo IF.Algoritma" class="header-logo">
-                <span class="site-title">IF.Algoritma</span>
-            </div>
-            <nav class="main-nav">
-                <ul>
-                    <li><a href="index.php">Home</a></li>
-                    <li><a href="profil.php">Profil</a></li>
-                    <li><a href="struktur.php">Struktur</a></li>
-                    <li><a href="anggota.php" class="active">Anggota</a></li>
-                    <li><a href="galeri.php">Galeri</a></li>
-                    <li><a href="logout.php">Logout</a></li>
-                </ul>
-            </nav>
+
+<header class="main-header">
+    <div class="container">
+        <div class="logo-container">
+            <img src="image/logo.jpg" alt="Logo IF.Algoritma" class="header-logo">
+            <span class="site-title">IF.Algoritma</span>
         </div>
-    </header>
+        <nav class="main-nav">
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="profil.html">Profil</a></li>
+                <li><a href="struktur.html">Struktur</a></li>
+                <li><a href="anggota.php" class="active">Anggota</a></li>
+                <li><a href="galeri.html">Galeri</a></li>
+            </ul>
+        </nav>
+    </div>
+</header>
 
-    <main>
-        <section id="daftar-anggota">
-            <div class="container">
-                <h2>Daftar Anggota Kelas</h2>
+<main>
+<section id="daftar-anggota">
+<div class="container">
+<h2>Daftar Anggota Kelas</h2>
 
-                <div class="anggota-grid">
-                    
-                    <div class="anggota-card">
-                        <img src="image/nanda.jpg" alt="Foto Anggota 1" class="anggota-foto">
-                        <h3>Nanda Maulana</h3>
-                        <h4>5520124001</h4>
-                        <p class="role">Anggota Biasa</p>
-                        <blockquote>"08 berapa kak? hehe"</blockquote>
-                    </div>
-                    
-                    <div class="anggota-card">
-                        <img src="image/alif.jpg" alt="Foto Anggota 2" class="anggota-foto">
-                        <h3>Alifa Sapta Maulidi</h3>
-                        <h4>5520124002</h4>
-                        <p class="role">Anggota Biasa</p>
-                        <blockquote>"TEKNIK, sebuah jurusan yang sanggup membuat mahasiswanya tidak tidur & memiliki hasrat tinggi untuk bunuh diri"</blockquote>
-                    </div>
+<div class="anggota-grid">
 
-                    <div class="anggota-card">
-                        <img src="image/bidadari.jpg" alt="Foto Anggota 2" class="anggota-foto">
-                        <h3>Amanda Keysa Maulida</h3>
-                        <h4>5520124003</h4>
-                        <p class="role">Anggota Biasa</p>
-                        <blockquote>"nyeblak yuuukkk "</blockquote>
-                    </div>
+<?php while ($row = mysqli_fetch_assoc($data)) : ?>
+    <div class="anggota-card">
+        <img src="image/<?= $row['foto'] ?>">
+        <h3><?= $row['nama'] ?></h3>
+        <h4><?= $row['npm'] ?></h4>
+        <blockquote>"<?= $row['quotes'] ?>"</blockquote>
 
-                    <div class="anggota-card">
-                        <img src="image/aziz.jpg" alt="Foto Anggota 2" class="anggota-foto">
-                        <h3>Aziz Arbiansyah</h3>
-                        <h4>5520124004</h4>
-                        <p class="role">Anggota Biasa</p>
-                        <blockquote>"Syukur, adalah mengingatkan kita untuk selalu menghargai apa yang sudah ada"</blockquote>
-                    </div>
+        <a href="edit.php?id=<?= $row['id'] ?>">Edit</a> |
+        <a href="hapus.php?id=<?= $row['id'] ?>"
+           onclick="return confirm('Hapus data?')">Hapus</a>
+    </div>
+<?php endwhile; ?>
 
-                    <div class="anggota-card">
-                        <img src="image/bima.jpg" alt="Foto Anggota 2" class="anggota-foto">
-                        <h3>Bima Iskandar Z</h3>
-                        <h4>5520124005</h4>
-                        <p class="role">Anggota Biasa</p>
-                        <blockquote>"Sabar, adalah kekuatan menghadapi ujian dengan hati tenang"</blockquote>
-                    </div>
+    <div class="anggota-tambah">
+        <a href="tambah.php">Tambah Anggota</a>
+    </div>
 
-                    <div class="anggota-card">
-                        <img src="image/dicky.jpg" alt="Foto Anggota 2" class="anggota-foto">
-                        <h3>Dicky Kamiludin</h3>
-                        <h4>5520124006</h4>
-                        <p class="role">Anggota Biasa</p>
-                        <blockquote>"Hidup itu panjang, singkatnya hdp"</blockquote>
-                    </div>
+</div>
+</div>
+</section>
+</main>
 
-                    <div class="anggota-card">
-                        <img src="image/fia.jpeg" alt="Foto Anggota 2" class="anggota-foto">
-                        <h3>Fia Rahmatillah Koswara</h3>
-                        <h4>5520124007</h4>
-                        <p class="role">Anggota Biasa</p>
-                        <blockquote>"Tetaplah hidup meskipun yaudahlah ya mau gimana lagi"</blockquote>
-                    </div>
+<footer>
+    <div class="container">
+        <p>&copy;2025 IF.Algoritma. Dibuat dengan HTML, CSS, dan JavaScript.</p>
+    </div>
+</footer>
 
-                    <div class="anggota-card">
-                        <img src="image/galuh.jpg" alt="Foto Anggota 2" class="anggota-foto">
-                        <h3>Galuh Pauline Nugraha</h3>
-                        <h4>5520124008</h4>
-                        <p class="role">Anggota Biasa</p>
-                        <blockquote>"Ga butuh kata-kata, butuhnya bukti nyata"</blockquote>
-                    </div>
+<script src="js/script.js"></script>
+<div id="up1" onclick="scrollUp()"></div>
 
-                    <div class="anggota-card">
-                        <img src="image/ikhsan.jpg" alt="Foto Anggota 2" class="anggota-foto">
-                        <h3>Ikhsan Salman Alfaris</h3>
-                        <h4>5520124009</h4>
-                        <p class="role">Anggota Biasa</p>
-                        <blockquote>"Semangat, adalah energi untuk terus maju meski ada rintangan"</blockquote>
-                    </div>
-
-                    <div class="anggota-card">
-                        <img src="image/ocan.jpg" alt="Foto Anggota 2" class="anggota-foto">
-                        <h3>Irvan Muda Athaya</h3>
-                        <h4>5520124010</h4>
-                        <p class="role">Anggota Biasa</p>
-                        <blockquote>"The world can't bring you down"</blockquote>
-                    </div>
-
-                    <div class="anggota-card">
-                        <img src="image/kevin.jpeg" alt="Foto Anggota 2" class="anggota-foto">
-                        <h3>La Ode Kevin</h3>
-                        <h4>5520124011</h4>
-                        <p class="role">Anggota Biasa</p>
-                        <blockquote>"“Infinite potential, finite time"
-                                    Potensi kita tidak terbatas, tapi waktu yang kita punya terbatas - jadi jangan berhenti bergerak."</blockquote>
-                    </div>
-
-                    <div class="anggota-card">
-                        <img src="image/aldi.jpg" alt="Foto Anggota 2" class="anggota-foto">
-                        <h3>M Aldi Safari</h3>
-                        <h4>5520124012</h4>
-                        <p class="role">Anggota Biasa</p>
-                        <blockquote>"Di saat kau pergi, jangan lupa untuk menolehkan mukamu ke belakang."</blockquote>
-                    </div>
-
-                    <div class="anggota-card">
-                        <img src="image/kalim.jpg" alt="Foto Anggota 2" class="anggota-foto">
-                        <h3>M Kamil Rizki Kusumah</h3>
-                        <h4>5520124013</h4>
-                        <p class="role">Anggota Biasa</p>
-                        <blockquote>"Kita hanya butuh lebih baik dari kemarin, bukan lebih baik dari yang lain"</blockquote>
-                    </div>
-
-                    <div class="anggota-card">
-                        <img src="image/rommy.jpg" alt="Foto Anggota 2" class="anggota-foto">
-                        <h3>M Rommy Arianugraha</h3>
-                        <h4>5520124014</h4>
-                        <p class="role">Anggota Biasa</p>
-                        <blockquote>"Harapan, adalah cahaya yang membuat langkah tetap hidup"</blockquote>
-                    </div>
-
-                    <div class="anggota-card">
-                        <img src="image/lintang.jpg" alt="Foto Anggota 2" class="anggota-foto">
-                        <h3>Mochamad Lintang Sedayu Arif Wibiseno</h3>
-                        <h4>5520124015</h4>
-                        <p class="role">Anggota Biasa</p>
-                        <blockquote>"Jangan menghabiskan hari ini hanya untuk mengkhawatirkan hari esok"</blockquote>
-                    </div>
-
-                    <div class="anggota-card">
-                        <img src="image/faza.JPG" alt="Foto Anggota 2" class="anggota-foto">
-                        <h3>Muchamad Faza Fadillah</h3>
-                        <h4>5520124016</h4>
-                        <p class="role">Anggota Biasa</p>
-                        <blockquote>"曼联是最好的俱乐部"</blockquote>
-                    </div>
-
-                    <div class="anggota-card">
-                        <img src="image/ketuakelas.jpg" alt="Foto Anggota 2" class="anggota-foto">
-                        <h3>Muggy Soewarman</h3>
-                        <h4>5520124017</h4>
-                        <p class="role">Ketua Kelas</p>
-                        <blockquote>"quotes"</blockquote>
-                    </div>
-
-                    <div class="anggota-card">
-                        <img src="image/aam.jpg" alt="Foto Anggota 2" class="anggota-foto">
-                        <h3>Muhammad Abdul Aziz Marhiansyah</h3>
-                        <h4>5520124018</h4>
-                        <p class="role">Anggota Biasa</p>
-                        <blockquote>"Jika kamu pernah selamat melewati badai, lantas mengapa harus menggigil saat melewati gerimis"</blockquote>
-                    </div>
-
-                    <div class="anggota-card">
-                        <img src="image/bimo.jpg" alt="Foto Anggota 2" class="anggota-foto">
-                        <h3>Muhammad Bimo Heru Wahyono</h3>
-                        <h4>5520124020</h4>
-                        <p class="role">Anggota Biasa</p>
-                        <blockquote>"Kata mama percaya diri itu bagus, tapi sadar diri itu harus"</blockquote>
-                    </div>
-
-                    <div class="anggota-card">
-                        <img src="image/alfi.jpg" alt="Foto Anggota 2" class="anggota-foto">
-                        <h3>Alfi Arifki</h3>
-                        <h4>5520124022</h4>
-                        <p class="role">Anggota Biasa</p>
-                        <blockquote>"Kadang manusia berkata semudah melempar batu kedalam laut, tanpa tau sedalam apa batu itu jatuh"</blockquote>
-                    </div>
-
-                    <div class="anggota-card">
-                        <img src="image/nur.jpg" alt="Foto Anggota 2" class="anggota-foto">
-                        <h3>Nur Arifah</h3>
-                        <h4>5520124024</h4>
-                        <p class="role">Anggota Biasa</p>
-                        <blockquote>"Bahagia itu sederhana, tapi jadi tujuan banyak orang."</blockquote>
-                    </div>
-
-                    <div class="anggota-card">
-                        <img src="image/pajri.jpg" alt="Foto Anggota 2" class="anggota-foto">
-                        <h3>Pajri Muhamad</h3>
-                        <h4>5520124025</h4>
-                        <p class="role">Anggota Biasa</p>
-                        <blockquote>"Jika tidak ada bahu untuk bersandar, tenang masih ada batagor untuk di dahar"</blockquote>
-                    </div>
-                    
-                    <div class="anggota-card">
-                        <img src="image/skretaris.jpg" alt="Foto Anggota 2" class="anggota-foto">
-                        <h3>Rani Maharani</h3>
-                        <h4>5520124026</h4>
-                        <p class="role">Sekertaris Kelas</p>
-                        <blockquote>"kadang pisau tak harus berbentuk tajam "</blockquote>
-                    </div>
-
-                    <div class="anggota-card">
-                        <img src="image/bendahara.jpg" alt="Foto Anggota 2" class="anggota-foto">
-                        <h3>Revalina Annisa Putri Asmara</h3>
-                        <h4>5520124027</h4>
-                        <p class="role">Bendahara Kelas</p>
-                        <blockquote>"quotes"</blockquote>
-                    </div>
-
-                    <div class="anggota-card">
-                        <img src="image/wakilketua.jpg" alt="Foto Anggota 2" class="anggota-foto">
-                        <h3>Robi Septiandi</h3>
-                        <h4>5520124028</h4>
-                        <p class="role">Wakil Ketua Kelas</p>
-                        <blockquote>"ada labu ,ada garam .. yang lalu sudah karam "</blockquote>
-                    </div>
-
-                    <div class="anggota-card">
-                        <img src="image/uwatere.jpg" alt="Foto Anggota 2" class="anggota-foto">
-                        <h3>Syarifah Nadia Alysyia</h3>
-                        <h4>5520124030</h4>
-                        <p class="role">Anggota Biasa</p>
-                        <blockquote>"ngantukkk "</blockquote>
-                    </div>
-
-                    <div class="anggota-card">
-                        <img src="image/tolut.jpeg" alt="Foto Anggota 2" class="anggota-foto">
-                        <h3>Tolut</h3>
-                        <h4>5520124031</h4>
-                        <p class="role">Anggota Biasa</p>
-                        <blockquote>"aku mau gambar"</blockquote>
-                    </div>
-
-                    <div class="anggota-card">
-                        <img src="image/revaldy.jpg" alt="Foto Anggota 2" class="anggota-foto">
-                        <h3>Mohammad Revaldy Hanafie</h3>
-                        <h4>5520124146</h4>
-                        <p class="role">Anggota Biasa</p>
-                        <blockquote>"life is a bitch, you are born cry, after that u die, enjoy every minute of it"</blockquote>
-                    </div>
-
-                    <div class="anggota-card">
-                        <img src="image/khai.jpg" alt="Foto Anggota 2" class="anggota-foto">
-                        <h3>Muhammad Fakhri Khairullah</h3>
-                        <h4>5520124147</h4>
-                        <p class="role">Anggota Biasa</p>
-                        <blockquote>"Semua orang boleh pergi, tapi si monyet satu ini jangan"</blockquote>
-                    </div>
-                    
-                </div>
-            </div>
-        </section>
-    </main>
-
-    <footer>
-        <div class="container">
-            <p>&copy;2025 IF.Algoritma. Dibuat dengan HTML, CSS, dan JavaScript.</p>
-        </div>
-    </footer>
-    
-    <script src="js/script.js"></script>
-    <div id="up1" onclick="scrollUp()"></div>
 </body>
 </html>
