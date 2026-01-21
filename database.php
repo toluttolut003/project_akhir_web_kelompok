@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 <?php
 require_once "connection.php";
 
@@ -25,3 +26,16 @@ class Anggota extends Database {
         return $this->conn->query("DELETE FROM anggota WHERE id=$id");
     }
 }
+
+    $server = "localhost";
+    $user = "root";
+    $password = "";
+    $db = "kelas";
+
+    $conn = "";
+
+    try {
+        $conn = mysqli_connect($server,$user,$password, $db);
+    } catch (mysqli_sql_exception) {
+      die('<h1 style="color : red;"> WARNING, DB CONNECTION LOST</h1>');
+    }
